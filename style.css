@@ -1,0 +1,321 @@
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:'Poppins',sans-serif;
+background:#0f0f0f;
+color:white;
+overflow-x:hidden;
+}
+
+section{
+padding:80px 10%;
+}
+
+h1,h2,h3{
+font-family:'Playfair Display',serif;
+}
+
+.loader{
+position:fixed;
+inset:0;
+background:#0f0f0f;
+display:flex;
+justify-content:center;
+align-items:center;
+z-index:9999;
+animation:loaderFade 2.5s forwards;
+}
+
+.loader h1{
+color:#d4af37;
+font-size:42px;
+animation:zoom 1.5s infinite alternate;
+}
+
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.1);}
+}
+
+@keyframes loaderFade{
+0%,80%{opacity:1;}
+100%{opacity:0;visibility:hidden;}
+}
+
+nav{
+position:sticky;
+top:0;
+background:rgba(0,0,0,0.85);
+backdrop-filter:blur(10px);
+display:flex;
+justify-content:space-between;
+align-items:center;
+padding:15px 10%;
+z-index:1000;
+}
+
+.logo{
+font-size:24px;
+color:#d4af37;
+font-weight:bold;
+}
+
+#menu{
+display:none;
+}
+
+.menu-icon{
+display:none;
+font-size:26px;
+cursor:pointer;
+}
+
+nav ul{
+list-style:none;
+display:flex;
+gap:25px;
+}
+
+nav a{
+color:white;
+text-decoration:none;
+position:relative;
+}
+
+nav a::after{
+content:"";
+width:0;
+height:2px;
+background:#d4af37;
+position:absolute;
+left:0;
+bottom:-5px;
+transition:0.3s;
+}
+
+nav a:hover::after{
+width:100%;
+}
+
+.hero{
+height:100vh;
+background:url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0") center/cover no-repeat;
+display:flex;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+}
+
+.hero::before{
+content:"";
+position:absolute;
+inset:0;
+background:rgba(0,0,0,0.65);
+}
+
+.hero-content{
+position:relative;
+}
+
+.hero h1{
+font-size:55px;
+margin-bottom:20px;
+background:linear-gradient(90deg,#fff,#d4af37,#fff);
+background-size:200%;
+-webkit-background-clip:text;
+color:transparent;
+animation:shine 5s linear infinite;
+}
+
+@keyframes shine{
+0%{background-position:0%;}
+100%{background-position:200%;}
+}
+
+.btn{
+background:linear-gradient(45deg,#d4af37,#f5e6a1);
+color:black;
+padding:12px 28px;
+border:none;
+border-radius:30px;
+cursor:pointer;
+transition:0.4s;
+font-weight:bold;
+}
+
+.btn:hover{
+transform:scale(1.08);
+box-shadow:0 0 20px rgba(212,175,55,0.6);
+}
+
+.reveal{
+opacity:0;
+transform:translateY(60px);
+animation:fadeUp 1s ease forwards;
+}
+
+@keyframes fadeUp{
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+
+.about{
+display:flex;
+gap:50px;
+align-items:center;
+flex-wrap:wrap;
+animation-delay:.3s;
+}
+
+.about img{
+width:400px;
+border-radius:12px;
+}
+
+.about-text{
+max-width:500px;
+}
+
+.section-title{
+text-align:center;
+margin-bottom:50px;
+}
+
+.section-title::after{
+content:"";
+width:80px;
+height:3px;
+background:#d4af37;
+display:block;
+margin:12px auto;
+}
+
+.menu-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:30px;
+}
+
+.card{
+background:rgba(255,255,255,0.05);
+backdrop-filter:blur(10px);
+border:1px solid rgba(255,255,255,0.1);
+border-radius:12px;
+overflow:hidden;
+transition:0.4s;
+}
+
+.card img{
+width:100%;
+height:200px;
+object-fit:cover;
+}
+
+.card:hover{
+transform:translateY(-12px);
+box-shadow:0 15px 35px rgba(212,175,55,0.3);
+}
+
+.card-content{
+padding:20px;
+}
+
+.price{
+color:#d4af37;
+font-weight:bold;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+transition:.6s;
+}
+
+.gallery img:hover{
+transform:scale(1.12);
+filter:brightness(1.2);
+}
+
+form{
+max-width:600px;
+margin:auto;
+display:flex;
+flex-direction:column;
+gap:15px;
+}
+
+input,textarea{
+padding:12px;
+border-radius:6px;
+border:none;
+}
+
+input:focus,textarea:focus{
+outline:none;
+border:1px solid #d4af37;
+}
+
+footer{
+background:#000;
+text-align:center;
+padding:30px;
+margin-top:50px;
+}
+
+footer p{
+color:#aaa;
+}
+
+@media(max-width:768px){
+
+.menu-icon{
+display:block;
+}
+
+nav ul{
+position:absolute;
+top:70px;
+left:0;
+width:100%;
+background:#000;
+flex-direction:column;
+text-align:center;
+max-height:0;
+overflow:hidden;
+transition:0.4s;
+}
+
+#menu:checked ~ ul{
+max-height:300px;
+}
+
+.hero h1{
+font-size:36px;
+}
+
+.about{
+flex-direction:column;
+text-align:center;
+}
+
+.about img{
+width:100%;
+}
+}
